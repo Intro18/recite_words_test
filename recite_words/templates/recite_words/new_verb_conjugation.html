@@ -1,0 +1,12 @@
+{% extends 'recite_words/base.html' %}
+{% block content %}
+<p>
+    <a href="{% url 'recite_words:jap_word' jap_word.id%}">{{jap_word.text}}</a>
+</p>
+<p>Add a new entry:</p>
+<form action="{% url 'recite_words:new_verb_conjugation' jap_word.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">add entry</button>
+</form>
+{% endblock content %}
