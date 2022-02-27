@@ -1,0 +1,43 @@
+{% extends 'recite_words/base.html' %}
+{% block header %}
+    <h3><small>Japanese Word:</small>&nbsp;&nbsp;&nbsp;&nbsp;{{jap_word.text}}</h3>
+    <a href="{% url 'recite_words:new_verb_conjugation' jap_word.id %}">
+        add new Verb Conjugation
+    </a>
+{% endblock header %}
+{% block content %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">ます形</th>
+                <th scope="col">て形</th>
+                <th scope="col">た形</th>
+                <th scope="col">ない形</th>
+                <th scope="col">命令形</th>
+                <th scope="col">意志形</th>
+                <th scope="col">ば形</th>
+                <th scope="col">可能形</th>
+                <th scope="col">被動形</th>
+                <th scope="col">使役形</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <th scope="row">1</th>
+                <td>{{verb_conjugation.polite}}</td>
+                <td>{{verb_conjugation.te_form}}</td>
+                <td>{{verb_conjugation.past}}</td>
+                <td>{{verb_conjugation.negative}}</td>
+                <td>{{verb_conjugation.imperative}}</td>
+                <td>{{verb_conjugation.volitional}}</td>
+                <td>{{verb_conjugation.conditional}}</td>
+                <td>{{verb_conjugation.potential}}</td>
+                <td>{{verb_conjugation.passive}}</td>
+                <td>{{verb_conjugation.causative}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+{% endblock content %}
