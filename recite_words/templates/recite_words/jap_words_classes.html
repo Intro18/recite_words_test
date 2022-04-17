@@ -1,0 +1,30 @@
+{% extends 'recite_words/base.html' %}
+{% block header %}
+    <h3><small>xxxxx:</small>&nbsp;&nbsp;&nbsp;&nbsp;{{jap_word.text}}</h3>
+{% endblock header %}
+{% block content %}
+{% if jap_words_classes is not null%}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">No.</th>
+                <th scope="col">单词类型</th>
+                <th scope="col">数量</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for word_class in jap_words_classes %}
+                <tr>
+                    <td scope="row">{{word_class.id}}</td>
+                    <td>
+                        <a href="{% url 'recite_words:jap_words' 1 word_class.id %}">
+                            {{word_class.class_name}}
+                        </a>
+                    </td>
+                    <td>{{word_class.class_count}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+{% endblock content %}
