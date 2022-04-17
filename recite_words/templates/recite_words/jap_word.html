@@ -6,6 +6,7 @@
     </a>
 {% endblock header %}
 {% block content %}
+    {% if verb_conjugation is not null and verb_conjugation.data|length > 0 %}
     <table class="table table-striped">
         <thead>
             <tr>
@@ -40,4 +41,5 @@
 
         </tbody>
     </table>
+    {% endif %}
 {% endblock content %}

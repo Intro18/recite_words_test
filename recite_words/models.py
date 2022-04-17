@@ -1,17 +1,25 @@
 from django.db import models
 
 
+class JapWordClasses(models.Model):
+    class_name = models.CharField(max_length=20)
+
+
 class JapWord(models.Model):
     """日语单词"""
     # 1.单词
     text = models.CharField(max_length=20)
-    # 2.单词类型
-    classes = models.CharField(max_length=2)
-    # 3.单词意思
-    meaning = models.CharField(max_length=30)
-    # 4.对应英语
-    en_text = models.CharField(max_length=20)
-    # 5.追加时间
+    # 2.平仮名
+    hiragana = models.CharField(max_length=20)
+    # 3.单词类型
+    classes = models.ForeignKey(JapWordClasses, on_delete=models.DO_NOTHING)
+    # 4.单词意思
+    meaning = models.CharField(max_length=30, null=True)
+    # 5.对应英语
+    en_text = models.CharField(max_length=20, null=True)
+    # 6.备注
+    comments = models.CharField(max_length=200, null=True)
+    # 7.追加时间
     date_added = models.DateTimeField(auto_now_add=True)
 
 
@@ -51,3 +59,6 @@ class VerbConjugation(models.Model):
     passive = models.CharField(max_length=20)
     # 11.使役形
     causative = models.CharField(max_length=20)
+
+
+
